@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description">
+<meta name="keywords">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<title>温湿度监考后台管理</title>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/vue.min.js"></script>
+<!-- Favicon and touch icons -->
+<link rel="shortcut icon" href="ico/favicon.png">
+<link rel="apple-touch-icon-precomposed" sizes="144x144"
+	href="/ico/apple-touch-icon-144-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114"
+	href="/ico/apple-touch-icon-114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72"
+	href="/ico/apple-touch-icon-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed"
+	href="/ico/apple-touch-icon-57-precomposed.png">
+<script>
+	$(function() {
+		$(".meun-item").click(function() {
+			$(".meun-item").removeClass("meun-item-active");
+			$(this).addClass("meun-item-active");
+			var itmeObj = $(".meun-item").find("img");
+			itmeObj.each(function() {
+				var items = $(this).attr("src");
+				items = items.replace("_grey.png", ".png");
+				items = items.replace(".png", "_grey.png")
+				$(this).attr("src", items);
+			});
+			var attrObj = $(this).find("img").attr("src");
+			;
+			attrObj = attrObj.replace("_grey.png", ".png");
+			$(this).find("img").attr("src", attrObj);
+		});
+		$("#topAD").click(function() {
+			$("#topA").toggleClass(" glyphicon-triangle-right");
+			$("#topA").toggleClass(" glyphicon-triangle-bottom");
+		});
+		$("#topBD").click(function() {
+			$("#topB").toggleClass(" glyphicon-triangle-right");
+			$("#topB").toggleClass(" glyphicon-triangle-bottom");
+		});
+		$("#topCD").click(function() {
+			$("#topC").toggleClass(" glyphicon-triangle-right");
+			$("#topC").toggleClass(" glyphicon-triangle-bottom");
+		});
+		$(".toggle-btn").click(function() {
+			$("#leftMeun").toggleClass("show");
+			$("#rightContent").toggleClass("pd0px");
+		})
+	})
+</script>
+<!--[if lt IE 9]>
+  <script src="js/html5shiv.min.js"></script>
+  <script src="js/respond.min.js"></script>
+<![endif]-->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="/css/common.css" />
+<link rel="stylesheet" type="text/css" href="/css/slide.css" />
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="/css/flat-ui.min.css" />
+<link rel="stylesheet" type="text/css" href="/css/jquery.nouislider.css">
+</head>
+
+<body>
+	<div id="wrap">
+		<div class="leftMeun" id="leftMeun">
+			<div id="logoDiv">
+				<p id="logoP">
+					<img id="logo" alt="左右结构项目" src="images/logo.png"><span>上海大学机房监控</span>
+				</p>
+			</div>
+			<div id="personInfor">
+				<p id="userName">杨鹏</p>
+				<p id="email">
+					<span>yangxp@qq.com</span>
+				<p>
+					<a>退出登录</a>
+				</p>
+			</div>
+			<div class="meun-title">账号管理</div>
+			<div class="meun-item" v-on:click="getPermission"
+				aria-controls="char" role="tab" data-toggle="tab">
+				<img src="images/icon_chara_grey.png">权限管理
+			</div>
+			<div class="meun-item" v-on:click="getUserManager" aria-controls="user" role="tab"
+				data-toggle="tab">
+				<img src="images/icon_user_grey.png">用户管理
+			</div>
+			<div class="meun-item" v-on:click="getUpdatePW"  aria-controls="chan" role="tab"
+				data-toggle="tab">
+				<img src="images/icon_change_grey.png">修改密码
+			</div>
+			<div class="meun-title">机房管理</div>
+			<div class="meun-item" href="#scho" aria-controls="scho" role="tab"
+				data-toggle="tab">
+				<img src="images/icon_house_grey.png">机房管理
+			</div>
+			<div class="meun-item" href="#stud" aria-controls="stud" role="tab"
+				data-toggle="tab">
+				<img src="images/icon_card_grey.png">人员信息
+			</div>
+			<div class="meun-item" href="#sitt" aria-controls="sitt" role="tab"
+				data-toggle="tab">
+				<img src="images/icon_char_grey.png">添加管理
+			</div>
+		</div>
+		<!-- 右侧具体内容栏目 -->
+		<!-- 内容 -->
+		<div id="rightContent">
+		<div id="page-content-wrapper">
+			<div class="container-fluid xyz" layout:fragment="content"></div>
+		</div>
+
+
+
+	</div>
+</div>
+
+
+</body>
+<script src="/js/jquery.nouislider.js"></script>
+<script type="text/javascript">
+	var app = new Vue({
+		el : '#leftMeun',
+		data : {
+
+		},
+		methods : {
+			getPermission : function() {
+				window.location.href = '/adminUpdatePermission';
+			},
+			getUserManager: function() {
+				window.location.href = '/adminUserManager';
+			},
+			getUpdatePW: function() {
+				window.location.href = '/admiUpdatePassword';
+		}
+		}
+			
+	})
+</script>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="/user/layout/frame">
+
+<head>
+<meta charset="UTF-8">
+<title>设备管理</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<!--地区管理模块-->
+		<!--地区管理模块-->
+		<div role="tabpanel" class="tab-pane" id="scho">
+			<div class="check-div form-inline">
+				<div class="col-lg-4 col-xs-5">
+					<input type="text" class=" form-control input-sm "
+						placeholder="查询设备">
+					<button class="btn btn-white btn-xs ">查 询</button>
+				</div>
+
+			</div>
+			<div class="data-div">
+				<div class="row tableHeader" id="list23">
+					<div class="col-xs-1 ">序号</div>
+					<div class="col-xs-2 ">地区</div>
+					<div class="col-xs-1">24h温度</div>
+					<div class="col-xs-1">24h湿度</div>
+					<div class="col-xs-2" id="but">查看监控</div>
+				</div>
+				<div class="tablebody">
+
+					<div class="row" id="app">
+						<tr v-for="item in items">
+							<td class="col-xs-1 ">{{index+1}}</td>
+							<td class="col-xs-2">{{items.location}}</td>
+							<td class="col-xs-1">{{items.temperature}}</td>
+							<td class="col-xs-1">{{items.humidity}}</td>
+							<td class="col-xs-2" v-on:click="Getweb">
+								<button class="btn btn-danger btn-xs" data-toggle="modal"
+									data-target="#deleteSchool">
+									<a>查看</a>
+								</button>
+							</td>
+						</tr>
+					</div>
+				</div>
+			</div>
+		</div>
+<script type="text/javascript">
+		var vm = new Vue({
+			el : '#app',
+			data : {
+				items : [],
+			},
+			created : function() {
+				jQuery.ajax({
+					type : "POST",
+					url : "/getManagerlist",
+					data:{
+						
+					},
+					success : function(data) {
+						vm.items = data;
+					}
+				});
+			},
+			method : {
+				Getweb : function() {
+					window.location.href = "/web2";
+				}
+			}
+		})
+</script>
+</div>
+</body>
+</html>

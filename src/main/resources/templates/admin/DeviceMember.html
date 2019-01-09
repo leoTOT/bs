@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="/admin/layout/frame">
+<head>
+<meta charset="UTF-8">
+<title>设备人员</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<!--人员管理模块-->
+		<div role="tabpanel" class="tab-pane" id="stud">
+			<div class="check-div form-inline">
+				<div class="col-xs-5">
+					<input type="text" class=" form-control input-sm"
+						placeholder="输入文字搜索" style="height: 40px !important;">
+					<button class="btn btn-white btn-xs ">查 询</button>
+				</div>
+				<div class="col-xs-4 col-lg-4  col-md-5"
+					style="padding-right: 40px; text-align: right; float: right;">
+					<label for="daoru">添加人员:&nbsp;</label>
+					<button class="btn btn-white btn-xs " data-toggle="modal"
+						data-target="#addUser">导入</button>
+				</div>
+			</div>
+			<div class="data-div">
+				<div class="row tableHeader">
+					<div class="col-xs-2 ">学号</div>
+					<div class="col-xs-1 ">姓名</div>
+					<div class="col-xs-2">院系</div>
+					<div class="col-xs-2">管理设备</div>
+					<div class="col-xs-1">操作</div>
+				</div>
+				<div class="tablebody">
+
+					<div class="row">
+						<div class="col-xs-2 ">6426398978</div>
+						<div class="col-xs-1">邓超</div>
+						<div class="col-xs-2">计算机中心</div>
+						<div class="col-xs-2">计算中心机房</div>
+						<div class="col-xs-1">
+							<button class="btn btn-danger btn-xs" data-toggle="modal"
+								data-target="#deleteObey">删除管理</button>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+			<!--页码块-->
+			<footer class="footer">
+				<ul class="pagination">
+					<li><select>
+							<option>1</option>
+							<option>2</option>
+							<option>3</option>
+							<option>4</option>
+							<option>5</option>
+							<option>6</option>
+							<option>7</option>
+							<option>8</option>
+							<option>9</option>
+							<option>10</option>
+					</select> 页</li>
+					<li class="gray">共20页</li>
+					<li><i class="glyphicon glyphicon-menu-left"> </i></li>
+					<li><i class="glyphicon glyphicon-menu-right"> </i></li>
+				</ul>
+			</footer>
+			<!--弹出添加用户窗口-->
+			<div class="modal fade" id="addUser" role="dialog"
+				aria-labelledby="gridSystemModalLabel">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+							<h4 class="modal-title" id="gridSystemModalLabel">设备添加用户</h4>
+						</div>
+						<div class="modal-body">
+							<div class="container-fluid">
+								<form class="form-horizontal">
+									<div class="form-group ">
+										<label for="sName" class="col-xs-3 control-label">设备号：</label>
+										<div class="col-xs-8 ">
+											<input type="email" class="form-control input-sm duiqi"
+												id="sName" placeholder="">
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="sLink" class="col-xs-3 control-label">老师工号：</label>
+										<div class="col-xs-8 ">
+											<input type="" class="form-control input-sm duiqi" id="sLink"
+												placeholder="">
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="sOrd" class="col-xs-3 control-label">真实姓名</label>
+										<div class="col-xs-8">
+											<input type="" class="form-control input-sm duiqi" id="sOrd"
+												placeholder="">
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="sKnot" class="col-xs-3 control-label">邮箱：</label>
+										<div class="col-xs-8">
+											<input type="" class="form-control input-sm duiqi" id="sKnot"
+												placeholder="">
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-xs btn-white"
+								data-dismiss="modal">取 消</button>
+							<button type="button" class="btn btn-xs btn-green">保 存</button>
+						</div>
+					</div>
+					<!-- /.modal-content -->
+				</div>
+				<!-- /.modal-dialog -->
+			</div>
+			<!--弹出删除违约记录警告窗口-->
+			<div class="modal fade" id="deleteObey" role="dialog"
+				aria-labelledby="gridSystemModalLabel">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+							<h4 class="modal-title" id="gridSystemModalLabel">提示</h4>
+						</div>
+						<div class="modal-body">
+							<div class="container-fluid">确定要删除该人员？删除后不可恢复！</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-xs btn-white"
+								data-dismiss="modal">取 消</button>
+							<button type="button" class="btn btn-xs btn-danger">保 存</button>
+						</div>
+					</div>
+					<!-- /.modal-content -->
+				</div>
+				<!-- /.modal-dialog -->
+			</div>
+			<!-- /.modal -->
+		</div>
+	</div>
+</body>
+</html>
